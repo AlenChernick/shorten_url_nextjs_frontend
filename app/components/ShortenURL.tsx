@@ -11,18 +11,21 @@ const ShortenURL: FC = () => {
   const hasLink = shortenURL.includes('http') ? true : false;
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
+      const shortenUrlServer: string | null = await shortenURLService.getShortenURL(values);
 
-    const shortenUrlServer: string | null = await shortenURLService.getShortenURL(values);
+      if (shortenUrlServer) {
+        setShortenURL(shortenUrlServer);
+        toast.success('Shorten URL Succeeded');
+      } else {
+        toast.error('URL Does Not Exists');
+      }
 
-    if (shortenUrlServer) {
-      setShortenURL(shortenUrlServer);
-      toast.success('Shorten URL Succeeded');
-    } else {
-      toast.error('URL Does Not Exists');
+      resetForm();
+    } catch (err) {
+      console.error('Failed to shorten:', err);
     }
-
-    resetForm();
   };
 
   const copyToClipboard = async () => {
