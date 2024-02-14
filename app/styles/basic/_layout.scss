@@ -1,0 +1,13 @@
+.main-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  background-color: $layout-background-color;
+  @include for-mobile-layout {
+    flex-direction: column;
+    gap: rem(25px);
+    padding-inline: rem(20px);
+    padding-block: 25px;
+  }
+}
