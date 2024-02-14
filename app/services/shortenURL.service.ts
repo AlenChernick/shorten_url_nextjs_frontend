@@ -1,6 +1,6 @@
 import { IFormValues } from '@/app/hooks/useForm';
 
-const apiURL = process.env.NEXT_PUBLIC_API_URL;
+const apiURL = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_API_URL : 'http://localhost:3333';
 
 const getShortenURL = async (values: IFormValues) => {
   try {
