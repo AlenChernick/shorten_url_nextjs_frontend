@@ -19,11 +19,8 @@ const getShortenURL = async (values: IFormValues) => {
 
     return responseURL;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      throw new Error('Cannot POST getShortenURL: ' + error.message);
-    } else {
-      throw new Error('Unknown error occurred while fetching shorten URL');
-    }
+    console.error(error);
+    return null;
   }
 };
 
