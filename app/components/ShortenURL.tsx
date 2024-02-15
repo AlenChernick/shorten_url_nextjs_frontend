@@ -50,6 +50,7 @@ const ShortenURL: FC = () => {
           title='format: https://example.com'
           value={values.url}
           onChange={handleChange}
+          autoComplete='off'
         />
         <button type='submit' className='url-shorten-btn'>
           Shorten URL

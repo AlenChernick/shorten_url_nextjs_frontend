@@ -44,6 +44,7 @@ const OriginalURL: FC = () => {
           required
           value={values.url}
           onChange={handleChange}
+          autoComplete='off'
         />
         <button type='submit' className='url-shorten-btn'>
           Original URL
